@@ -1,4 +1,5 @@
 import os
+import sys
 from setuptools import setup, find_packages
 
 # allow setup.py to be run from any path
@@ -63,9 +64,13 @@ THE SOFTWARE.
 
 """
 
+extra = {}
+if sys.version_info[0] == 3:
+    extra['use_2to3'] = True
+
 setup(
     name='redlock-py',
-    version='1.0.4',
+    version='1.0.5',
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
@@ -80,4 +85,5 @@ setup(
             'redlock = redlock.cli:main',
         ],
     },
+    **extra
 )
